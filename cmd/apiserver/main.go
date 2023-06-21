@@ -5,8 +5,7 @@ import (
 	"log"
 
 	"github.com/BurntSushi/toml"
-
-	apiserver "github.com/Harddancer/rest_api_go"
+	"github.com/Harddancer/rest_api_go/internal/app/apiserver"
 )
 
 var (
