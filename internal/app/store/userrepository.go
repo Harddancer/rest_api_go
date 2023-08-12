@@ -1,6 +1,10 @@
 package store
 
-import "github.com/Harddancer/rest_api_go/internal/app/model"
+import (
+	"fmt"
+
+	"github.com/Harddancer/rest_api_go/internal/app/model"
+)
 
 type UserRepository struct{
 	store *Store
@@ -13,6 +17,7 @@ func (r *UserRepository) Create(u *model.User) (*model.User, error){
 	).Scan(&u.ID); err != nil{
 		return nil, err
 	}
+	fmt.Printf("ID новой записи %d",u.ID)
 	return u,nil
 }
 
@@ -20,7 +25,7 @@ func (r *UserRepository) FindByEmail(email string) (*model.User, error){
 
 	u := &model.User{}
 	if err := r.store.db.QueryRow(
-		"SELECT id,email,encrypted_password FROM users WHERE email = &1",
+		"SELECT id,email,encrypted_password FROM users WHERE email = $1",
 		email,
 		).Scan(
 			&u.ID,

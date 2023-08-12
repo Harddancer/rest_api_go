@@ -21,7 +21,7 @@ func New(config *Config) *Store{
 
 func(s *Store) Open() error{
 
-	fmt.Print("Открывает бд")
+	//fmt.Print("Открывает бд")
 
 	db, err := sql.Open("postgres",s.config.DatabaseUrl)
 	fmt.Print(db)

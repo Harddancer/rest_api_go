@@ -28,13 +28,13 @@ func TestUserRepository_FindByEmail(t *testing.T,){
 	s, teardown := store.TestStore(t, databaseUrl)
 	defer teardown("users")
 
-	email := "user555@email.com"
+	email := "user123457@email.com"
 
 	_,err := s.User().FindByEmail(email)
 	assert.Error(t,err)
 
 	s.User().Create(&model.User{
-		Email: "user123@email.com",
+		Email: "user123457@email.com",
 	})
 
 	u,err := s.User().FindByEmail(email)
