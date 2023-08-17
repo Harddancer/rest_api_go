@@ -50,17 +50,7 @@ func TestUserRepository_FindById(t *testing.T,){
 	s, teardown := store.TestStore(t, databaseUrl)
 	defer teardown("users")
 
-	id,_:= s.User().Create(&model.User{
-		Email: "fjhjfhfjhdsjhfsdjfs",
-	})
-
-
-	
-
-	// _,err := s.User().FindById(id.ID)
-	// assert.Error(t,err)
-
-	
+	id,_:= s.User().Create(model.TestUser((t)))
 
 	u,err := s.User().FindById(id.ID)
 	fmt.Print(u)

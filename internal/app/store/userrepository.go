@@ -12,6 +12,11 @@ type UserRepository struct{
 }
 
 func (r *UserRepository) Create(u *model.User) (*model.User, error){
+if err := u.Validate();err != nil{
+	return nil, err
+}
+
+
 if err  := u.BeforCreate();err != nil{
 	return nil,err
 }
